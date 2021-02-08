@@ -11,6 +11,19 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            //FirstMethod();
+            CarManager carManager = new CarManager(new EfCarDal());
+            foreach (var car in carManager.GetCarDetails())
+            {
+                Console.WriteLine(car.CarName + "/" + car.ColorName + "/" + car.DailyPrice + "/" + car.BrandName);
+            }
+
+
+
+        }
+
+        private static void FirstMethod()
+        {
             CarManager carManager = new CarManager(new EfCarDal());
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
@@ -45,7 +58,6 @@ namespace ConsoleUI
 
             carManager.Add(new Car { BrandId = 1, ColorId = 2, DailyPrice = -300, ModelYear = "2021", Descriptions = "Otomatik Dizel" });
             brandManager.Add(new Brand { BrandName = "a" });
-
         }
     }
 }
